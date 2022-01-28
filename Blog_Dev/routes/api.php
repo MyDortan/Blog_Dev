@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApiPostController;
-use App\Http\Controllers\Api\ApiNewProductController;
+use App\Http\Controllers\Api\ApiProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +20,5 @@ use App\Http\Controllers\Api\ApiNewProductController;
 //    return $request->user();
 //});
 Route::apiResource('post',ApiPostController::class);
-Route::get('newProduct',[ApiNewProductController::class, 'OrderDesc']);
+Route::get('newProduct',[ApiProductController::class, 'orderById']);
+Route::get('randomProduct',[ApiProductController::class, 'randomProduct']);
