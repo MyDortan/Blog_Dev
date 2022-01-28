@@ -15,7 +15,9 @@ class ApiPostController extends Controller
      */
     public function index()
     {
-        return Post::all();
+
+        return Post::inRandomOrder()->get();
+
     }
 
     /**
