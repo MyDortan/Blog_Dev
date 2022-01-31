@@ -20,7 +20,8 @@ class CreateCommentsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('ratio');
-            $table->string('like');
+            $table->integer('like');
+            $table->text('date');
             $table->timestamps();
 
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade')->onUpdate('cascade');

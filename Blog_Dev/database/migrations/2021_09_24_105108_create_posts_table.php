@@ -19,7 +19,9 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('categories');
-            $table->dateTimeTz('date');
+            $table->text('image_url');
+            $table->integer('like');
+            $table->text('date');
             $table->timestamps();
 
 //            $table->foreign('user_id')->references('id')->on('users');
