@@ -88,21 +88,21 @@ class ApiCommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
-        $update = Comment::find($id);
-        $update->text = $request->text;
-        $update->name = $request->name;
-        $update->email = $request->email;
-        $update->ratio = $request->ratio;
-        if ($update->save()){
-            return response([
-               'msg' => 'کامنت شما با موفقیت بروز رسانی شد .' ,
-            ]);
-        }else{
-            return response([
-                'msg' => 'لطفا کادر ها رو پر کنید .' ,
+        $update = Comment::findOrFail($id);
+        $update->update($request->only([
+            'text' => $request->text,
+            'name' => $request->text,
+            'email' => $request->email,
+            'ratio' => $request->ratio,
+        ]));
+        if ($update){
+            return response()->json([
+                'massage' => 'successful update',
             ]);
         }
+        return response()->json([
+            'massage' => 'failed to update',
+        ]);
     }
 
     /**

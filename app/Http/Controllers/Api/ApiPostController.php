@@ -34,7 +34,7 @@ class ApiPostController extends Controller
            'title' => $request->title,
            'description' => $request->description,
            'categories' => $request->categories,
-           'image_url' => $request->image_url,
+           'image' => $request->image,
             'like' => $request->like,
             'date' => $v->formatJalaliDate(), // 23:26:35,
         ]);
@@ -73,7 +73,7 @@ class ApiPostController extends Controller
                 'title' => $request->title,
                 'description' => $request->description,
                 'categories' => $request->categories,
-                'image_url' => $request->image_url,
+                'image' => $request->image,
                 'date' => $v->formatJalaliDate(),
             ]));
             if ($post){
