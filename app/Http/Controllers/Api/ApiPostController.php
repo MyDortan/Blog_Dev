@@ -66,24 +66,14 @@ class ApiPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        dd($request->all());
             $v = verta();
             $post = Post::findOrFail($id);
-            $post->update($request->only([
-                'title' => $request->title,
-                'description' => $request->description,
-                'categories' => $request->categories,
-                'image' => $request->image,
-                'date' => $v->formatJalaliDate(),
-            ]));
-            if ($post){
-                return response()->json([
-                    'massage' => 'successful update',
-                ]);
-            }
-            return response()->json([
-               'massage' => 'failed to update',
+            $post->update($request->all());
+            return response([
+                'post_information' => $post,
+                'message' => 'success'
             ]);
+
 
     }
 

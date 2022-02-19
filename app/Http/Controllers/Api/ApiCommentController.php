@@ -19,15 +19,7 @@ class ApiCommentController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -89,19 +81,10 @@ class ApiCommentController extends Controller
     public function update(Request $request, $id)
     {
         $update = Comment::findOrFail($id);
-        $update->update($request->only([
-            'text' => $request->text,
-            'name' => $request->text,
-            'email' => $request->email,
-            'ratio' => $request->ratio,
-        ]));
-        if ($update){
-            return response()->json([
-                'massage' => 'successful update',
-            ]);
-        }
-        return response()->json([
-            'massage' => 'failed to update',
+        $update->update($request->all());
+        return response([
+           'comment_information' => $update,
+           'message' => 'success'
         ]);
     }
 
