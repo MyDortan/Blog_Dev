@@ -66,15 +66,19 @@ class ApiPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-            $v = verta();
-            $post = Post::findOrFail($id);
-            $post->update($request->all());
+        $post = Post::findOrFail($id);
+        if ($post->update($request->all())) {
             return response([
                 'post_information' => $post,
-                'message' => 'success'
+                'message' => 'success',
+                'status' => 'ok'
             ]);
-
-
+        } else {
+            return response([
+                'message' => 'ویرایش پست با خطا مواجه شد لطفا دوباره تلاش کنید',
+                'status' => 'error'
+            ]);
+        }
     }
 
     /**

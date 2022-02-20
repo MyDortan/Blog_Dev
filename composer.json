@@ -10,7 +10,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "hekmatinasser/verta": "^1.12",
         "laravel/framework": "^8.75",
-        "laravel/sanctum": "^2.11",
+        "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.5"
     },
     "require-dev": {
