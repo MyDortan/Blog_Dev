@@ -19,6 +19,10 @@ use App\Http\Controllers\Api\ApiAuthController;
 */
 
 // public Route
+Route::post('/register' , [ApiAuthController::class , 'register']);
+Route::post('/login' , [ApiAuthController::class , 'login']);
+Route::post('/logout' , [ApiAuthController::class , 'logout']);
+
 Route::apiResource('post',ApiPostController::class);
 Route::get('newPost',[ApiProductController::class, 'orderById']);
 Route::get('randomPost',[ApiProductController::class, 'randomProduct']);
@@ -29,11 +33,8 @@ Route::get('/post/{id}/comment/{idComment}',[ApiCommentController::class, 'show'
 
 // protected Route
 //Route::group(['middleware' => ['auth:sanctum']],function (){
-//
 //});
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
 
 Route::get('pLikeComment/{id}',[ApiLikeController::class, 'plusLikeComment']);
 Route::get('mLikeComment/{id}',[ApiLikeController::class, 'minusLikeComment']);

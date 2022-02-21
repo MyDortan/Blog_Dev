@@ -67,19 +67,26 @@ class ApiPostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::findOrFail($id);
-        if ($post->update($request->all())) {
+//        $post->update($request->all());
+        $post->post_id = $request->post_id;
+        $post->text = $request->text;
+        $post->name = $request->name;
+        $post->email = $request->email;
+        $post->ratio = $request->ratio;
+        $post->save();
             return response([
                 'post_information' => $post,
                 'message' => 'success',
                 'status' => 'ok'
             ]);
-        } else {
-            return response([
-                'message' => 'ویرایش پست با خطا مواجه شد لطفا دوباره تلاش کنید',
-                'status' => 'error'
-            ]);
         }
-    }
+//        else {
+//            return response([
+//                'message' => 'ویرایش پست با خطا مواجه شد لطفا دوباره تلاش کنید',
+//                'status' => 'error'
+//            ]);
+//        }
+
 
     /**
      * Remove the specified resource from storage.

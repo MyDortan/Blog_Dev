@@ -80,7 +80,7 @@ class ApiCommentController extends Controller
         $update->update($request->all());
         return response([
            'comment_information' => $update,
-           'message' => 'success'
+           'message' => 'success',
         ]);
     }
 
